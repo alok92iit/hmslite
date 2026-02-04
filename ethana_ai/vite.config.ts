@@ -1,0 +1,19 @@
+import path from "path"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import tailwindcss from '@tailwindcss/vite'
+export default defineConfig({
+  optimizeDeps: {
+    exclude: ['pdfjs-dist']
+  },
+  plugins: [react(), tailwindcss ()],
+
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    // historyApiFallback: true,  // 👈 Required for React Router refresh
+  },
+})
