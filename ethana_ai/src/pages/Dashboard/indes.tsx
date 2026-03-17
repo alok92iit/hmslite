@@ -66,7 +66,7 @@ export default function HRAttendanceDashboard() {
 
   const departments: any[] = ["All", ...new Set(employees.map((emp:any) => emp.department))];
 
-  const filteredEmployees: Employee[] = matrix?.notMarked.filter((emp:any) => {
+  const filteredEmployees: Employee[] = matrix?.notMarked?.filter((emp:any) => {
     const matchesSearch = emp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          emp.department.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesDept = filterDept === "All" || emp.department === filterDept;
@@ -268,12 +268,12 @@ export default function HRAttendanceDashboard() {
             <CardHeader>
               <CardTitle className="text-gray-900">Unmarked Employee's Attendance</CardTitle>
               <CardDescription className="text-gray-600">
-                {filteredEmployees.length} employee{filteredEmployees.length !== 1 ? 's' : ''} found
+                {filteredEmployees?.length} employee{filteredEmployees?.length !== 1 ? 's' : ''} found
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
-                {filteredEmployees.map((employee, index) => (
+                {filteredEmployees?.map((employee, index) => (
                   <motion.div
                     key={employee._id}
                     initial={{ opacity: 0, x: -20 }}
